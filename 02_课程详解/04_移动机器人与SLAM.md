@@ -10,7 +10,7 @@
 |---|---|
 | 学校 / 讲者 | University of Bonn / Cyrill Stachniss |
 | 页面 | https://www.youtube.com/playlist?list=PLgnQpQtFTOGQEn33QDVGJpiZLi-SlL7vA |
-| 学期 | T2 |
+| 阶段 | T2 |
 | 工作量 | 50–70 小时 |
 | 前置 | 概率论、线代、Python |
 
@@ -35,7 +35,7 @@
 - 用粒子滤波完成定位，对比不同粒子数的精度
 - 占据栅格建图
 
-### 掌握标准
+### 能力目标
 
 - 能写出 EKF 的五个公式并解释各项
 - 能说明粒子滤波相对 EKF 的适用条件与代价
@@ -60,7 +60,7 @@
 |---|---|
 | 学校 / 讲者 | University of Bonn / Cyrill Stachniss |
 | 页面 | https://www.youtube.com/watch?v=mQvKhmWagB4&list=PLgnQpQtFTOGQh_J16IMwDlji18SWQ2PZ6 |
-| 学期 | T3 |
+| 阶段 | T3 |
 | 工作量 | 60–80 小时 |
 | 前置 | MRS I、线代（最小二乘） |
 
@@ -83,7 +83,7 @@
 - 用 Gauss-Newton 实现二维位姿图优化
 - 实现回环检测与后端优化，运行公开数据集（如 Intel 数据集）
 
-### 掌握标准
+### 能力目标
 
 - 能写出位姿图的误差函数与雅可比
 - 能说明 SLAM 后端的稀疏结构及其来源

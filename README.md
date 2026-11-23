@@ -1,6 +1,6 @@
-# 机器人方向课程体系（21 个月）
+# 机器人方向课程体系
 
-本仓库整理机器人方向的学习内容与课程安排，课程清单来自 [brunoeducsantos/robotics_master](https://github.com/brunoeducsantos/robotics_master)，该仓库把 Bonn、TUM、MIT（以及 UZH、Michigan）的机器人核心课按 7 个 trimester、21 个月组织成一套学习计划。本仓库在其基础上补充了每门课的内容拆分、先修要求、作业产出与掌握标准，并附有与 NTU MSc (Robotics & Intelligent Systems) 的课程对照。
+本仓库整理机器人方向的学习内容与课程安排。课程清单来自 [brunoeducsantos/robotics_master](https://github.com/brunoeducsantos/robotics_master)，该清单把 Bonn、TUM、MIT（以及 UZH、Michigan）的机器人核心课按 7 个阶段组织。本仓库在其基础上补充了每门课的内容拆分、先修要求与作业产出，并附有就业方向与 NTU 课程对照。
 
 ---
 
@@ -16,20 +16,20 @@
 | 规划与控制 | 已知状态后的运动生成与稳定性 | Convex Optimization、Underactuated Robotics |
 | 学习（视觉端） | 语义类问题由神经网络处理 | Deep Learning for CV (EECS498) |
 
-这五项能力不随应用对象改变——移动机器人、机械臂、自动驾驶、无人机使用的都是同一组能力，差别在权重分配：
+这五项能力不随应用对象改变，移动机器人、机械臂、自动驾驶、无人机使用的都是同一组能力，差别在权重分配：
 
 - 移动机器人、自动驾驶：感知与状态估计占比最高
 - 机械臂、腿足机器人：规划与控制占比最高
 - 感知算法岗：视觉几何与深度学习占比最高
 - 三维重建、数字孪生：视觉几何占比最高
 
-因此本仓库不按应用方向拆分课程，而是按依赖关系排列为一条学习序列。
+因此课程按依赖关系排列为一条学习序列，不按应用方向拆分。
 
 ---
 
 ## 2. 课程总表
 
-| 学期 | 课程 | 学校 / 讲者 |
+| 阶段 | 课程 | 学校 / 讲者 |
 |---|---|---|
 | T1 | [Modern C++ for Computer Vision](https://www.ipb.uni-bonn.de/teaching/cpp-2020/) | Bonn / Cyrill Stachniss |
 | T1 | [Photogrammetry I](https://www.ipb.uni-bonn.de/photo12-2021/) | Bonn / Cyrill Stachniss |
@@ -48,7 +48,7 @@
 | 备选 | [Convex Optimization](https://www.edx.org/course/convex-optimization) | Stanford / Stephen Boyd |
 | 前置 | [18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)、[微积分](https://www.youtube.com/watch?v=f0BxAtprWts)、[PyTorch 入门](https://learn.microsoft.com/en-us/training/paths/pytorch-fundamentals/) | MIT / Microsoft |
 
-各门课的内容模块、先修要求、作业与掌握标准见 `02_课程详解/`。
+各门课的内容模块、先修要求与作业见 `02_课程详解/`。
 
 ---
 
@@ -56,28 +56,26 @@
 
 | 文件 | 内容 |
 |---|---|
-| [01_课程总表/01_21个月课程总表.md](01_课程总表/01_21个月课程总表.md) | 课程依赖关系、工作量、产出汇总 |
+| [01_课程总表/01_课程总表.md](01_课程总表/01_课程总表.md) | 课程依赖关系、工作量、产出汇总 |
 | [02_课程详解/01_编程与数学基础.md](02_课程详解/01_编程与数学基础.md) | Modern C++、18.06 线代、微积分、PyTorch |
 | [02_课程详解/02_视觉几何与三维重建.md](02_课程详解/02_视觉几何与三维重建.md) | Photogrammetry I/II、Multiview Geometry、3D Scanning |
 | [02_课程详解/03_深度学习视觉.md](02_课程详解/03_深度学习视觉.md) | EECS498 内容与作业 |
 | [02_课程详解/04_移动机器人与SLAM.md](02_课程详解/04_移动机器人与SLAM.md) | Mobile Robotics and Sensing I/II |
 | [02_课程详解/05_视觉导航.md](02_课程详解/05_视觉导航.md) | Vision Algorithms、TUM 实践课、MIT VNAV |
 | [02_课程详解/06_控制与优化.md](02_课程详解/06_控制与优化.md) | Convex Optimization、Underactuated Robotics |
-| [03_学习节奏/01_21个月排期.md](03_学习节奏/01_21个月排期.md) | 逐月安排与每周时间分配 |
-| [03_学习节奏/02_课程验收标准.md](03_学习节奏/02_课程验收标准.md) | 各门课的掌握标准 |
+| [03_就业方向/01_就业方向.md](03_就业方向/01_就业方向.md) | 岗位分类、技能要求、面试内容、行业与薪资 |
 | [04_工具链/01_工具链与仿真环境.md](04_工具链/01_工具链与仿真环境.md) | 按课程阶段的环境配置 |
 | [05_NTU对照/01_NTU课程对照.md](05_NTU对照/01_NTU课程对照.md) | NTU MSc 与本课程体系的对应关系 |
-| [05_NTU对照/02_申请要点与时间线.md](05_NTU对照/02_申请要点与时间线.md) | NTU 申请材料与时间安排 |
 
 ---
 
 ## 4. 使用方式
 
 1. 先完成先修内容：18.06 线代、Python、基础 C++。缺少这部分时，Modern C++ 课程会停留在语法层面，几何内容难以展开。
-2. 同一时间只开一门主课。Bonn 的 C++ 与 Photogrammetry 作业量较大，多门并行会导致进度停留在观看视频。
-3. 按依赖顺序推进：Modern C++ → Photogrammetry I → MRS I → Multiview Geometry → Vision Algorithms → EECS498 → VNAV → Underactuated。控制与优化课程可在后期并行。
+2. 按依赖顺序推进：Modern C++ → Photogrammetry I → MRS I → Multiview Geometry → Vision Algorithms → EECS498 → VNAV → Underactuated。控制与优化课程可在后期并行。
+3. 同一时间只开一门主课。Bonn 的 C++ 与 Photogrammetry 作业量较大，多门并行会导致进度停留在观看视频。
 4. 每门课的产出为代码与结论说明两部分，仅有可运行的 demo 不计入完成。
-5. 时间投入参考每周 10–12 小时，21 个月约 900–1000 小时，与一套授课型硕士的课程量相当。
+5. 就业方向与岗位所需能力见 `03_就业方向/`。
 
 ---
 
