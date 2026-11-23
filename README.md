@@ -1,85 +1,89 @@
-# NTU MSc (Robotics & Intelligent Systems) 学习方向与路线总览
+# 机器人方向怎么学：一套 21 个月的课程表
 
-> 依据三份资料整理：
-> 1. [NTU 官方项目页](https://www.ntu.edu.sg/admissions/graduate/programme/master-of-science-(robotics-and-intelligent-systems)) — 课程结构、申请要求
-> 2. [brunoeducsantos/robotics_master](https://github.com/brunoeducsantos/robotics_master) — Bonn / TUM / MIT 21 个月机器人课程聚合
-> 3. [掘金 AI 工程学习路线图](https://juejin.cn/post/7586573133349912622) — Python → 数学 → LLM → Agent → 多智能体 → 协议
-
----
-
-## 一句话结论
-
-**NTU 这个项目本质是"机械学院底色的机器人系统工程硕士"，不是纯 AI 硕士。**
-它的强项是控制、机构、传感、系统集成；AI 只有一门 MA6211。所以：
-
-- 想走 **AI 方向** → 课程够用当骨架，但深度学习/大模型/VLA 必须靠 repo + 自学补。
-- 想走 **嵌入式方向** → 课程匹配度最高，几乎不用额外补课，重点补动手和 C++。
-- 想走 **世界模型方向** → 课程匹配度最低，必须靠选修组合 + dissertation + 自学论文，数学要求最高。
+> 这个仓库只做一件事：**把"做机器人"这件事讲清楚，并给出一门一门具体的课**。
+>
+> 课程来源：[brunoeducsantos/robotics_master](https://github.com/brunoeducsantos/robotics_master) —— 把 Bonn、TUM、MIT（以及 UZH、Michigan）的机器人核心课拼成一个 21 个月、7 个 trimester 的学习计划。本仓库在此基础上补了每门课的**内容拆解、前置要求、作业产出、验收标准**，并对照了 NTU MSc (Robotics & Intelligent Systems) 的课程设置。
 
 ---
 
-## 三条路线速选
+## 一、先搞清楚：机器人方向到底在学什么
 
-| 维度 | AI 方向 | 嵌入式方向 | 世界模型方向 |
-|---|---|---|---|
-| 核心问题 | 机器人如何"看懂 + 学会做事" | 机器人如何"动得准、通信稳、跑得久" | 机器人如何"在脑中预演未来" |
-| 数学要求 | 中高（线代/概率/优化） | 中（信号、控制、离散数学） | 高（概率、优化、生成模型、RL） |
-| 编程 | Python / PyTorch 为主 | C / C++ / RTOS 为主 | Python / PyTorch / CUDA 为主 |
-| 硬件依赖 | 低（仿真可替代） | 高（必须接线、烧板、调电机） | 中（需要 GPU，不一定需要真机） |
-| NTU 课程匹配 | 中（1 门 AI + Vision） | 高（控制/传感/制造全中） | 低（需自己组课） |
-| 6 个月可见产出 | 训一个抓取策略 | 一台自己调的闭环小车/机械臂 | 复现一个 Dreamer/3DGS 场景 |
-| 就业面 | 具身智能、感知算法、VLA | 机器人本体、固件、电机控制 | 研究岗、自动驾驶仿真、世界模型团队 |
-| 难度 | ★★★☆ | ★★★ | ★★★★ |
-| 适合谁 | 已有 Python/深度学习基础 | 喜欢动手、能忍受调试 | 想读博或进前沿研究团队 |
+很多人以为机器人 = 深度学习 + 机械臂。真正难的是**把感知、状态估计、规划控制、工程实现四件事串成一个闭环**，而且误差会累积、传感器会坏、实时性会卡。
 
----
+| 能力支柱 | 回答的问题 | 对应课程 |
+|---|---|---|
+| **① 工程实现** | 能不能用 C++ 把算法写出来、跑到实时 | Modern C++ for Computer Vision |
+| **② 感知（视觉/几何）** | 相机拍到的东西，怎么变成 3D 点和位姿 | Photogrammetry I/II、Multiview Geometry、Vision Algorithms |
+| **③ 状态估计与建图** | 机器人在哪、周围长什么样、怎么在噪声里估出来 | Mobile Robotics & Sensing I/II、MIT VNAV |
+| **④ 规划与控制** | 知道在哪之后，怎么动、怎么稳、怎么最优 | Convex Optimization、Underactuated Robotics |
+| **⑤ 学习（视觉端）** | 传统几何做不了的语义问题交给神经网络 | Deep Learning for CV (EECS498) |
 
-## 文件地图
+这五根支柱不分方向——**做移动机器人、做机械臂、做自动驾驶、做无人机，用的都是这五根**。区别只是配比：
+- 移动机器人/自动驾驶：②③ 权重最高
+- 机械臂/腿足：④ 权重最高
+- 感知算法岗：②⑤ 权重最高
+- 三维重建/数字孪生：② 权重最高
 
-### 01_课程解析
-- `01_NTU课程全景.md` — 学位结构、全部课程逐门解读、教学特点
-- `02_课程与方向映射矩阵.md` — 每门课对三条路线的价值打分
-- `03_开源课程对照表.md` — repo 21 个月课程 vs NTU 课程 vs 自学用途
-- `04_申请要点与时间线.md` — 2027 年 8 月入学的材料清单与倒排时间
-
-### 02_方向选择
-- `01_三大方向对比.md` — 决策表、自测题
-- `02_AI方向详解.md` — 细分赛道、知识栈、就业
-- `03_嵌入式方向详解.md` — 从 MCU 到 ROS2 的完整栈
-- `04_世界模型方向详解.md` — 四条技术流派、必读论文
-
-### 03_学习路线
-- `01_总路线图_18个月.md` — 入学前 + 在读的整体节奏
-- `02_AI路线.md` / `03_嵌入式路线.md` / `04_世界模型路线.md` — 分阶段任务与验收标准
-
-### 04_嵌入式硬件入门
-- `01_硬件选型总表.md` — 主控 / 调试 / 传感 / 执行器 / 整机
-- `02_三档预算方案.md` — 500 元 / 3000 元 / 15000 元
-- `03_传感器与执行器清单.md` — 每个器件的用途与对应课程
-- `04_学习顺序与避坑.md` — 先学什么、常见炸板原因
-
-### 05_项目清单
-- `01_入门项目.md`（10 个）/ `02_进阶项目.md`（10 个）/ `03_作品集与选题.md`
-
-### 06_资源库
-- `01_公开课清单.md` / `02_书籍与论文清单.md` / `03_工具链与仿真环境.md` / `04_数据集与开源项目.md`
-
-### 07_求职方向
-- `01_岗位地图.md` / `02_简历与作品集.md`
+所以本仓库**不按方向拆课**，而是按「由浅入深、前后依赖」排成一条线。
 
 ---
 
-## 建议使用顺序
+## 二、21 个月课程总表（一眼看全）
 
-1. 先读 `01_课程解析/01` 和 `02`，搞清楚这个学位到底教什么。
-2. 用 `02_方向选择/01` 的决策表给自己定位（不要三条都想要）。
-3. 选定一条路线后，只看对应的 `03_学习路线` 文件，其他两条当备选。
-4. 如果选嵌入式，直接进 `04_嵌入式硬件入门`，先下单再学。
-5. 每 3 个月用 `05_项目清单` 里的项目做一次验收。
+| 学期 | 课程 | 学校 / 讲者 |
+|---|---|---|
+| T1 | [Modern C++ for Computer Vision](https://www.ipb.uni-bonn.de/teaching/cpp-2020/) | Bonn / Cyrill Stachniss |
+| T1 | [Photogrammetry I](https://www.ipb.uni-bonn.de/photo12-2021/) | Bonn / Cyrill Stachniss |
+| T2 | [Mobile Robotics and Sensing I](https://www.youtube.com/playlist?list=PLgnQpQtFTOGQEn33QDVGJpiZLi-SlL7vA) | Bonn / Cyrill Stachniss |
+| T2 | [Photogrammetry II](https://www.ipb.uni-bonn.de/photo12-2021/) | Bonn / Cyrill Stachniss |
+| T3 | [Mobile Robotics and Sensing II](https://www.youtube.com/watch?v=mQvKhmWagB4&list=PLgnQpQtFTOGQh_J16IMwDlji18SWQ2PZ6) | Bonn / Cyrill Stachniss |
+| T3 | [Multiview Geometry](https://cvg.cit.tum.de/teaching/ss2019/mvg2019) | TUM / Daniel Cremers |
+| T4 | [Vision Algorithms for Mobile Robotics](https://rpg.ifi.uzh.ch/teaching.html) | UZH / Davide Scaramuzza |
+| T4 | [Project: 视觉导航实践](https://cvg.cit.tum.de/teaching/ws2020/visnav_ws2020#lectures) | TUM |
+| T5 | [Practical Course: Vision-based Navigation](https://cvg.cit.tum.de/teaching/ws2021/visnav_ws2021) | TUM |
+| T5 | [Deep Learning for Computer Vision (EECS498)](https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/schedule.html) | Michigan / Justin Johnson |
+| T6 | [3D Scanning and Motion Capture](https://www.cs.cit.tum.de/cg/teaching/winter-term-2122/3d-scanning-motion-capture/) | TUM / Matthias Niessner |
+| T6 | Deep Learning for Computer Vision（续） | Michigan / Justin Johnson |
+| T7 | [Visual Navigation for Autonomous Vehicles (VNAV)](https://vnav.mit.edu/) | MIT / Luca Carlone |
+| T7 | [Underactuated Robotics](https://underactuated.csail.mit.edu/index.html) | MIT / Russ Tedrake |
+| 备选 | [Convex Optimization](https://www.edx.org/course/convex-optimization) | Stanford / Stephen Boyd |
+| 前置 | [18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)、[微积分](https://www.youtube.com/watch?v=f0BxAtprWts)、[PyTorch 入门](https://learn.microsoft.com/en-us/training/paths/pytorch-fundamentals/) | MIT / Microsoft |
 
-## 关键时间点（截至 2026-11-23）
+每门课"讲什么、前置是什么、作业是什么、怎么算学会"写在 `02_课程详解/` 里。
 
-- 2027 年 8 月入学申请窗口：**2026-10-01 至 2027-03-31**（当前正在进行）
-- MAE 奖学金申请截止：**2027-03-31**，需单独提交表格
-- 语言：TOEFL iBT ≥ 85 或 IELTS ≥ 6.0（非英文授课本科）
-- 材料：成绩单、2 封推荐信、Statement of Purpose
+---
+
+## 三、文件地图
+
+| 文件 | 内容 |
+|---|---|
+| [01_课程总表/01_21个月课程总表.md](01_课程总表/01_21个月课程总表.md) | 全部课程逐门表：先修关系、工作量、产出 |
+| [02_课程详解/01_编程与数学基础.md](02_课程详解/01_编程与数学基础.md) | Modern C++、18.06 线代、微积分、PyTorch |
+| [02_课程详解/02_视觉几何与三维重建.md](02_课程详解/02_视觉几何与三维重建.md) | Photogrammetry I/II、Multiview Geometry、3D Scanning |
+| [02_课程详解/03_深度学习视觉.md](02_课程详解/03_深度学习视觉.md) | EECS498 全课拆解 |
+| [02_课程详解/04_移动机器人与SLAM.md](02_课程详解/04_移动机器人与SLAM.md) | Mobile Robotics and Sensing I/II |
+| [02_课程详解/05_视觉导航.md](02_课程详解/05_视觉导航.md) | Vision Algorithms、TUM 实践课、MIT VNAV |
+| [02_课程详解/06_控制与优化.md](02_课程详解/06_控制与优化.md) | Convex Optimization、Underactuated Robotics |
+| [03_学习节奏/01_21个月排期.md](03_学习节奏/01_21个月排期.md) | 每周投入、每学期任务、里程碑 |
+| [03_学习节奏/02_课程验收标准.md](03_学习节奏/02_课程验收标准.md) | 每门课"学完"的客观判据 |
+| [04_工具链/01_工具链与仿真环境.md](04_工具链/01_工具链与仿真环境.md) | Ubuntu/ROS2/OpenCV/Eigen/GTSAM/仿真器 |
+| [05_NTU对照/01_NTU课程对照.md](05_NTU对照/01_NTU课程对照.md) | NTU MSc 课程 vs 这套课，怎么互补 |
+| [05_NTU对照/02_申请要点与时间线.md](05_NTU对照/02_申请要点与时间线.md) | 若同时申请 NTU：材料与倒排时间 |
+
+---
+
+## 四、怎么用
+
+1. **先补前置**：线性代数（18.06 前 18 讲）+ Python + 一点 C++。不补直接上 Modern C++ 会卡在语法而不是几何。
+2. **一次只开一门**。这套课作业量很大（Bonn 的 C++ 和 Photogrammetry 都是大量编程作业），同时开三门的结果是"看过 = 学会"。
+3. **按依赖顺序走**：Modern C++ → Photogrammetry I → MRS I → Multiview Geometry → Vision Algorithms → EECS498 → VNAV → Underactuated。控制/优化可以并行插在后期。
+4. **每门课都要交东西**：跑通一个 demo 不算，要产出代码 + 一段能讲清楚的结论（见验收标准）。
+5. **建议每周 10–12 小时**，21 个月约 900–1000 小时，正好是一套硕士课程的量。
+
+---
+
+## 五、几句实话
+
+- 原 repo 只是**链接聚合**：不给证书、不给作业答案、没有助教。视频多是往年学期，部分可能失效，但讲义 PDF 一般还在。
+- 这套课偏**几何 + 视觉 + 状态估计 + 控制**，是"机器人系统工程"的经典路线；**几乎不覆盖**大模型、VLA、具身智能、强化学习工程、嵌入式 MCU/RTOS。这些要另找资源。
+- 学完的合理预期：能读懂 ICRA/IROS/CoRL 的感知与导航论文，能用 C++/Python 复现一个视觉里程计或 SLAM 系统，能解释清楚"误差从哪来"。不是"能训一个通用机器人基础模型"。
