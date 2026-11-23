@@ -1,34 +1,33 @@
-# 机器人方向怎么学：一套 21 个月的课程表
+# 机器人方向课程体系（21 个月）
 
-> 这个仓库只做一件事：**把"做机器人"这件事讲清楚，并给出一门一门具体的课**。
->
-> 课程来源：[brunoeducsantos/robotics_master](https://github.com/brunoeducsantos/robotics_master) —— 把 Bonn、TUM、MIT（以及 UZH、Michigan）的机器人核心课拼成一个 21 个月、7 个 trimester 的学习计划。本仓库在此基础上补了每门课的**内容拆解、前置要求、作业产出、验收标准**，并对照了 NTU MSc (Robotics & Intelligent Systems) 的课程设置。
+本仓库整理机器人方向的学习内容与课程安排，课程清单来自 [brunoeducsantos/robotics_master](https://github.com/brunoeducsantos/robotics_master)，该仓库把 Bonn、TUM、MIT（以及 UZH、Michigan）的机器人核心课按 7 个 trimester、21 个月组织成一套学习计划。本仓库在其基础上补充了每门课的内容拆分、先修要求、作业产出与掌握标准，并附有与 NTU MSc (Robotics & Intelligent Systems) 的课程对照。
 
 ---
 
-## 一、先搞清楚：机器人方向到底在学什么
+## 1. 机器人的能力构成
 
-很多人以为机器人 = 深度学习 + 机械臂。真正难的是**把感知、状态估计、规划控制、工程实现四件事串成一个闭环**，而且误差会累积、传感器会坏、实时性会卡。
+机器人系统的难点集中在四个环节的衔接：感知、状态估计、规划控制、工程实现。四者构成闭环，误差会在闭环中累积，同时对实时性有约束。
 
-| 能力支柱 | 回答的问题 | 对应课程 |
+| 环节 | 解决的问题 | 相关课程 |
 |---|---|---|
-| **① 工程实现** | 能不能用 C++ 把算法写出来、跑到实时 | Modern C++ for Computer Vision |
-| **② 感知（视觉/几何）** | 相机拍到的东西，怎么变成 3D 点和位姿 | Photogrammetry I/II、Multiview Geometry、Vision Algorithms |
-| **③ 状态估计与建图** | 机器人在哪、周围长什么样、怎么在噪声里估出来 | Mobile Robotics & Sensing I/II、MIT VNAV |
-| **④ 规划与控制** | 知道在哪之后，怎么动、怎么稳、怎么最优 | Convex Optimization、Underactuated Robotics |
-| **⑤ 学习（视觉端）** | 传统几何做不了的语义问题交给神经网络 | Deep Learning for CV (EECS498) |
+| 工程实现 | 算法能否用 C++ 实现并满足实时性 | Modern C++ for Computer Vision |
+| 感知（视觉与几何） | 图像如何转换为三维点与位姿 | Photogrammetry I/II、Multiview Geometry、Vision Algorithms |
+| 状态估计与建图 | 位姿与环境结构如何在噪声中估计 | Mobile Robotics & Sensing I/II、MIT VNAV |
+| 规划与控制 | 已知状态后的运动生成与稳定性 | Convex Optimization、Underactuated Robotics |
+| 学习（视觉端） | 语义类问题由神经网络处理 | Deep Learning for CV (EECS498) |
 
-这五根支柱不分方向——**做移动机器人、做机械臂、做自动驾驶、做无人机，用的都是这五根**。区别只是配比：
-- 移动机器人/自动驾驶：②③ 权重最高
-- 机械臂/腿足：④ 权重最高
-- 感知算法岗：②⑤ 权重最高
-- 三维重建/数字孪生：② 权重最高
+这五项能力不随应用对象改变——移动机器人、机械臂、自动驾驶、无人机使用的都是同一组能力，差别在权重分配：
 
-所以本仓库**不按方向拆课**，而是按「由浅入深、前后依赖」排成一条线。
+- 移动机器人、自动驾驶：感知与状态估计占比最高
+- 机械臂、腿足机器人：规划与控制占比最高
+- 感知算法岗：视觉几何与深度学习占比最高
+- 三维重建、数字孪生：视觉几何占比最高
+
+因此本仓库不按应用方向拆分课程，而是按依赖关系排列为一条学习序列。
 
 ---
 
-## 二、21 个月课程总表（一眼看全）
+## 2. 课程总表
 
 | 学期 | 课程 | 学校 / 讲者 |
 |---|---|---|
@@ -49,41 +48,41 @@
 | 备选 | [Convex Optimization](https://www.edx.org/course/convex-optimization) | Stanford / Stephen Boyd |
 | 前置 | [18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)、[微积分](https://www.youtube.com/watch?v=f0BxAtprWts)、[PyTorch 入门](https://learn.microsoft.com/en-us/training/paths/pytorch-fundamentals/) | MIT / Microsoft |
 
-每门课"讲什么、前置是什么、作业是什么、怎么算学会"写在 `02_课程详解/` 里。
+各门课的内容模块、先修要求、作业与掌握标准见 `02_课程详解/`。
 
 ---
 
-## 三、文件地图
+## 3. 文件结构
 
 | 文件 | 内容 |
 |---|---|
-| [01_课程总表/01_21个月课程总表.md](01_课程总表/01_21个月课程总表.md) | 全部课程逐门表：先修关系、工作量、产出 |
+| [01_课程总表/01_21个月课程总表.md](01_课程总表/01_21个月课程总表.md) | 课程依赖关系、工作量、产出汇总 |
 | [02_课程详解/01_编程与数学基础.md](02_课程详解/01_编程与数学基础.md) | Modern C++、18.06 线代、微积分、PyTorch |
 | [02_课程详解/02_视觉几何与三维重建.md](02_课程详解/02_视觉几何与三维重建.md) | Photogrammetry I/II、Multiview Geometry、3D Scanning |
-| [02_课程详解/03_深度学习视觉.md](02_课程详解/03_深度学习视觉.md) | EECS498 全课拆解 |
+| [02_课程详解/03_深度学习视觉.md](02_课程详解/03_深度学习视觉.md) | EECS498 内容与作业 |
 | [02_课程详解/04_移动机器人与SLAM.md](02_课程详解/04_移动机器人与SLAM.md) | Mobile Robotics and Sensing I/II |
 | [02_课程详解/05_视觉导航.md](02_课程详解/05_视觉导航.md) | Vision Algorithms、TUM 实践课、MIT VNAV |
 | [02_课程详解/06_控制与优化.md](02_课程详解/06_控制与优化.md) | Convex Optimization、Underactuated Robotics |
-| [03_学习节奏/01_21个月排期.md](03_学习节奏/01_21个月排期.md) | 每周投入、每学期任务、里程碑 |
-| [03_学习节奏/02_课程验收标准.md](03_学习节奏/02_课程验收标准.md) | 每门课"学完"的客观判据 |
-| [04_工具链/01_工具链与仿真环境.md](04_工具链/01_工具链与仿真环境.md) | Ubuntu/ROS2/OpenCV/Eigen/GTSAM/仿真器 |
-| [05_NTU对照/01_NTU课程对照.md](05_NTU对照/01_NTU课程对照.md) | NTU MSc 课程 vs 这套课，怎么互补 |
-| [05_NTU对照/02_申请要点与时间线.md](05_NTU对照/02_申请要点与时间线.md) | 若同时申请 NTU：材料与倒排时间 |
+| [03_学习节奏/01_21个月排期.md](03_学习节奏/01_21个月排期.md) | 逐月安排与每周时间分配 |
+| [03_学习节奏/02_课程验收标准.md](03_学习节奏/02_课程验收标准.md) | 各门课的掌握标准 |
+| [04_工具链/01_工具链与仿真环境.md](04_工具链/01_工具链与仿真环境.md) | 按课程阶段的环境配置 |
+| [05_NTU对照/01_NTU课程对照.md](05_NTU对照/01_NTU课程对照.md) | NTU MSc 与本课程体系的对应关系 |
+| [05_NTU对照/02_申请要点与时间线.md](05_NTU对照/02_申请要点与时间线.md) | NTU 申请材料与时间安排 |
 
 ---
 
-## 四、怎么用
+## 4. 使用方式
 
-1. **先补前置**：线性代数（18.06 前 18 讲）+ Python + 一点 C++。不补直接上 Modern C++ 会卡在语法而不是几何。
-2. **一次只开一门**。这套课作业量很大（Bonn 的 C++ 和 Photogrammetry 都是大量编程作业），同时开三门的结果是"看过 = 学会"。
-3. **按依赖顺序走**：Modern C++ → Photogrammetry I → MRS I → Multiview Geometry → Vision Algorithms → EECS498 → VNAV → Underactuated。控制/优化可以并行插在后期。
-4. **每门课都要交东西**：跑通一个 demo 不算，要产出代码 + 一段能讲清楚的结论（见验收标准）。
-5. **建议每周 10–12 小时**，21 个月约 900–1000 小时，正好是一套硕士课程的量。
+1. 先完成先修内容：18.06 线代、Python、基础 C++。缺少这部分时，Modern C++ 课程会停留在语法层面，几何内容难以展开。
+2. 同一时间只开一门主课。Bonn 的 C++ 与 Photogrammetry 作业量较大，多门并行会导致进度停留在观看视频。
+3. 按依赖顺序推进：Modern C++ → Photogrammetry I → MRS I → Multiview Geometry → Vision Algorithms → EECS498 → VNAV → Underactuated。控制与优化课程可在后期并行。
+4. 每门课的产出为代码与结论说明两部分，仅有可运行的 demo 不计入完成。
+5. 时间投入参考每周 10–12 小时，21 个月约 900–1000 小时，与一套授课型硕士的课程量相当。
 
 ---
 
-## 五、几句实话
+## 5. 适用范围
 
-- 原 repo 只是**链接聚合**：不给证书、不给作业答案、没有助教。视频多是往年学期，部分可能失效，但讲义 PDF 一般还在。
-- 这套课偏**几何 + 视觉 + 状态估计 + 控制**，是"机器人系统工程"的经典路线；**几乎不覆盖**大模型、VLA、具身智能、强化学习工程、嵌入式 MCU/RTOS。这些要另找资源。
-- 学完的合理预期：能读懂 ICRA/IROS/CoRL 的感知与导航论文，能用 C++/Python 复现一个视觉里程计或 SLAM 系统，能解释清楚"误差从哪来"。不是"能训一个通用机器人基础模型"。
+- 原仓库为课程链接汇总，不提供证书、作业答案与助教支持。多数课程为往年学期页面，视频存在失效可能，讲义 PDF 通常仍可访问。
+- 本课程体系以几何、视觉、状态估计与控制为主线，属于机器人系统工程的经典路径。大模型、VLA、具身智能、强化学习工程、嵌入式 MCU/RTOS 等内容不在此范围内。
+- 完成后的能力范围：能够读懂 ICRA/IROS/CoRL 中感知与导航方向的论文，能够用 C++/Python 复现视觉里程计或 SLAM 系统，能够定位系统中的主要误差来源。不包含训练通用机器人基础模型的能力。
